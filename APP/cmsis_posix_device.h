@@ -1,0 +1,4 @@
+#ifndef CMSIS_POSIX_DEVICE_H
+#define CMSIS_POSIX_DEVICE_H
+
+#endif

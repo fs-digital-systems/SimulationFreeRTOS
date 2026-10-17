@@ -24,12 +24,14 @@ Benötigt werden GCC und GNU Make. Auf Ubuntu:
 
 ```sh
 sudo apt install build-essential
-make
-make run
+./build.sh
+./start.sh
 ```
 
-`make run` startet die offizielle FreeRTOS-Blinky-Demo. Mit `Ctrl+C` wird sie
-beendet. `make clean` entfernt die Build-Ausgabe des Demos.
+`build.sh` baut das offizielle Demo. `start.sh` baut bei Bedarf und startet
+anschließend die FreeRTOS-Blinky-Demo. Mit `Ctrl+C` wird sie beendet. Die
+Skripte können aus jedem Arbeitsverzeichnis aufgerufen werden. `make clean`
+entfernt die Build-Ausgabe des Demos.
 
 ## FreeRTOS aktualisieren
 

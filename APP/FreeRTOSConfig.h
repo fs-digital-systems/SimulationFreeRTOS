@@ -1,10 +1,14 @@
 #ifndef APP_FREERTOS_CONFIG_H
 #define APP_FREERTOS_CONFIG_H
 
+#include <assert.h>
+
 #include "../FreeRTOS/FreeRTOS/Demo/Posix_GCC/FreeRTOSConfig.h"
 
 #undef configMAX_PRIORITIES
 #define configMAX_PRIORITIES 56
+
+#define configCPU_CLOCK_HZ configTICK_RATE_HZ
 
 #undef configSUPPORT_STATIC_ALLOCATION
 #define configSUPPORT_STATIC_ALLOCATION 0
@@ -20,5 +24,8 @@
 
 #undef configGENERATE_RUN_TIME_STATS
 #define configGENERATE_RUN_TIME_STATS 0
+
+#undef configASSERT
+#define configASSERT(expression) assert(expression)
 
 #endif

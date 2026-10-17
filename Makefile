@@ -50,7 +50,7 @@ check-dependencies:
 $(TARGET): $(OBJECTS)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-$(BUILD_DIR)/%.o: %.c APP/FreeRTOSConfig.h APP/cmsis_posix_device.h
+$(BUILD_DIR)/%.o: %.c APP/FreeRTOSConfig.h APP/cmsis_compiler.h APP/cmsis_posix_device.h
 	@mkdir -p "$(@D)"
 	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
 

@@ -25,6 +25,9 @@
 #undef configGENERATE_RUN_TIME_STATS
 #define configGENERATE_RUN_TIME_STATS 0
 
+#define configUSE_OS2_TIMER 0
+#define configUSE_OS2_MUTEX 0
+
 #undef configASSERT
 #define configASSERT(expression) assert(expression)
 

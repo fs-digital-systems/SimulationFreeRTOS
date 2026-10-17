@@ -1,9 +1,10 @@
 CC ?= gcc
-CFLAGS ?= -std=gnu11 -O2 -g -Wall -Wextra -Wpedantic
+CFLAGS ?= -std=gnu11 -O2 -g -Wall -Wextra -Wpedantic -ffunction-sections -fdata-sections
 LDFLAGS ?=
+LDFLAGS += -Wl,--gc-sections
 LDLIBS := -pthread
 
-BUILD_DIR := build
+BUILD_DIR := app-build
 TARGET := $(BUILD_DIR)/cmsis_freertos_demo
 KERNEL_DIR := FreeRTOS/FreeRTOS/Source
 POSIX_DIR := $(KERNEL_DIR)/portable/ThirdParty/GCC/Posix
@@ -49,6 +50,8 @@ check-dependencies:
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
+
+$(BUILD_DIR)/$(CMSIS_FREERTOS_DIR)/Source/cmsis_os2.o: CFLAGS += -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
 
 $(BUILD_DIR)/%.o: %.c APP/FreeRTOSConfig.h APP/cmsis_compiler.h APP/cmsis_posix_device.h
 	@mkdir -p "$(@D)"
